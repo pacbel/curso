@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>curso.api</name>
+    </assembly>
+    <members>
+        <member name="T:curso.api.Controllers.CursoController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Controllers.CursoController.Post(curso.api.Models.Cursos.CursoViewModelInput)">
+            <summary>
+            Este serviço permite cadastrar curso para o usuário autenticado.
+            </summary>
+            <returns>Retorna status ok, dados do usuário e token em caso de sucesso</returns>
+        </member>
+        <member name="M:curso.api.Controllers.CursoController.Get">
+            <summary>
+            Este serviço permite obter todos os cursos ativos do usuário.
+            </summary>
+            <returns>Retorna status ok, e dados do curso do usuário</returns>
+        </member>
+        <member name="T:curso.api.Controllers.UsuarioController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Controllers.UsuarioController.Logar">
+            <summary>
+            Serviço de autenticação do usuário
+            </summary>
+            <returns>Retorna status ok, dados do usuário e token em caso de sucesso</returns>
+        </member>
+        <member name="M:curso.api.Controllers.UsuarioController.Registrar(curso.api.Models.Usuarios.RegistroViewModelInput)">
+            <summary>
+            
+            </summary>
+            <param name="registroViewModelInput"></param>
+            <returns></returns>
+        </member>
+        <member name="T:curso.api.Filters.ValidacaoModelStateCustomizado">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Filters.ValidacaoModelStateCustomizado.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:curso.api.Models.Cursos.CursoViewModelInput">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Models.Cursos.CursoViewModelInput.Nome">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Models.Cursos.CursoViewModelInput.Descricao">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:curso.api.Models.Cursos.CursoViewModelOutput">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Models.Cursos.CursoViewModelOutput.Nome">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Models.Cursos.CursoViewModelOutput.Descricao">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Models.Cursos.CursoViewModelOutput.Login">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:curso.api.Models.ErroGenericoViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Models.ErroGenericoViewModel.Mensagem">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:curso.api.Models.Usuarios.LoginViewModelInput">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Models.Usuarios.LoginViewModelInput.Login">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Models.Usuarios.LoginViewModelInput.Senha">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:curso.api.Models.Usuarios.RegistroViewModelInput">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Models.Usuarios.RegistroViewModelInput.Login">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Models.Usuarios.RegistroViewModelInput.Email">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Models.Usuarios.RegistroViewModelInput.Senha">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:curso.api.Models.Usuarios.UsuarioViewModelOutput">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Models.Usuarios.UsuarioViewModelOutput.Codigo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Models.Usuarios.UsuarioViewModelOutput.Email">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Models.Usuarios.UsuarioViewModelOutput.Login">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:curso.api.Models.ValidaCampoViewModelOutput">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Models.ValidaCampoViewModelOutput.Erros">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Models.ValidaCampoViewModelOutput.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="erros"></param>
+        </member>
+        <member name="T:curso.api.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:curso.api.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:curso.api.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:curso.api.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:curso.api.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>
