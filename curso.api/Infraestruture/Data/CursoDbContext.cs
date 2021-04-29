@@ -33,5 +33,9 @@ namespace curso.api.Infraestruture.Data
         /// 
         /// </summary>
         public DbSet<Usuario> Usuario { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public DbSet<Curso> Curso { get; set; }
     }
 }

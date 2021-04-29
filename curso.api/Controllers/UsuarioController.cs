@@ -1,20 +1,11 @@
 ﻿using curso.api.Business.Entities;
+using curso.api.Business.Repositories;
+using curso.api.Configurations;
 using curso.api.Filters;
-using curso.api.Infraestruture.Data;
 using curso.api.Models;
 using curso.api.Models.Usuarios;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Annotations;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace curso.api.Controllers
 {/// <summary>
@@ -24,6 +15,22 @@ namespace curso.api.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
+        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IAuthenticationService _authenticationService;
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="usuarioRepository"></param>
+/// <param name="authenticationService"></param>
+        public UsuarioController(IUsuarioRepository usuarioRepository,
+                                    IAuthenticationService authenticationService)
+                                    
+        {
+            this._usuarioRepository = usuarioRepository;
+            this._authenticationService = authenticationService;
+        }
+
         /// <summary>
         /// Serviço de autenticação do usuário
         /// </summary>
@@ -34,33 +41,29 @@ namespace curso.api.Controllers
         [HttpPost]
         [Route("logar")]
         [ValidacaoModelStateCustomizado]
-        public IActionResult Logar()
+        public IActionResult Logar(LoginViewModelInput loginViewModelInput)
         {
+
+            Usuario usuario = _usuarioRepository.ObterUsuario(loginViewModelInput.Login);
+
+            if (usuario == null)
+            {
+                return BadRequest("Houve um erro ao tentar acessar.");
+            }
+
+            //if (usuario.Senha != loginViewModelInput.GerarSenhaCriptografada())
+            //{
+            //    return BadRequest("Houve um erro ao tentar acessar.");
+            //}
 
             var usuarioViewModelOutput = new UsuarioViewModelOutput()
             {
-                Codigo = 1,
-                Login = "Carlos Pacheco",
-                Email = "carlos.pacheco@pacbel.com.br"
+                Codigo = usuario.Codigo,
+                Login = loginViewModelInput.Login,
+                Email = usuario.Email
             };
 
-            var secret = Encoding.ASCII.GetBytes(">!+Wzzt.~iYF5rzhYuLQRZ,uNxnggeohdNXp^Bq+Cxj]@*K?)a");
-            var symetricSecurityKey = new SymmetricSecurityKey(secret);
-            var securityTokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.NameIdentifier, usuarioViewModelOutput.Codigo.ToString()),
-                    new Claim(ClaimTypes.Name, usuarioViewModelOutput.Login.ToString()),
-                    new Claim(ClaimTypes.Email, usuarioViewModelOutput.Email.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddDays(1),
-                SigningCredentials = new SigningCredentials(symetricSecurityKey, SecurityAlgorithms.HmacSha256Signature)
-            };
-            var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
-            var tokenGenerated = jwtSecurityTokenHandler.CreateToken(securityTokenDescriptor);
-
-            var token = jwtSecurityTokenHandler.WriteToken(tokenGenerated);
+            var token = _authenticationService.GerarToken(usuarioViewModelOutput);
 
             return Ok(new
             {
@@ -79,23 +82,17 @@ namespace curso.api.Controllers
         [ValidacaoModelStateCustomizado]
         public IActionResult Registrar(RegistroViewModelInput loginViewModelInput)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<CursoDbContext>();
-            optionsBuilder.UseSqlServer("Server=.;Database=CURSO;user=sa;password=p4ch3c0");
-            CursoDbContext contexto = new CursoDbContext(optionsBuilder.Options);
 
-            var migracoespendentes = contexto.Database.GetPendingMigrations();
-            if (migracoespendentes.Count() > 0)
-            {
-                contexto.Database.Migrate();
-            }
+
+
             var usuario = new Usuario
             {
                 Login = loginViewModelInput.Login,
                 Senha = loginViewModelInput.Senha,
                 Email = loginViewModelInput.Email
             };
-            contexto.Usuario.Add(usuario);
-            contexto.SaveChanges();
+            _usuarioRepository.Adicionar(usuario);
+            _usuarioRepository.Commit();
 
             return Created("", loginViewModelInput);
         }

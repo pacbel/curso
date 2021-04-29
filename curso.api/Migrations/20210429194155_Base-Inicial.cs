@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace curso.api.Migrations
-{
+{/// <summary>
+/// 
+/// </summary>
     public partial class BaseInicial : Migration
     {/// <summary>
     /// 

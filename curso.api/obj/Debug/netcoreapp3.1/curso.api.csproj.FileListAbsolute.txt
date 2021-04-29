@@ -1,4 +1,3 @@
-F:\digitalInnovationOne\workspace\curso\curso.api\obj\Debug\netcoreapp3.1\curso.api.csprojAssemblyReference.cache
 F:\digitalInnovationOne\workspace\curso\curso.api\obj\Debug\netcoreapp3.1\curso.api.AssemblyInfoInputs.cache
 F:\digitalInnovationOne\workspace\curso\curso.api\obj\Debug\netcoreapp3.1\curso.api.AssemblyInfo.cs
 F:\digitalInnovationOne\workspace\curso\curso.api\obj\Debug\netcoreapp3.1\curso.api.csproj.CoreCompileInputs.cache
@@ -13,10 +12,12 @@ F:\digitalInnovationOne\workspace\curso\curso.api\bin\Debug\netcoreapp3.1\curso.
 F:\digitalInnovationOne\workspace\curso\curso.api\bin\Debug\netcoreapp3.1\curso.api.dll
 F:\digitalInnovationOne\workspace\curso\curso.api\bin\Debug\netcoreapp3.1\curso.api.pdb
 F:\digitalInnovationOne\workspace\curso\curso.api\bin\Debug\netcoreapp3.1\curso.api.xml
+F:\digitalInnovationOne\workspace\curso\curso.api\bin\Debug\netcoreapp3.1\Humanizer.dll
 F:\digitalInnovationOne\workspace\curso\curso.api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 F:\digitalInnovationOne\workspace\curso\curso.api\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 F:\digitalInnovationOne\workspace\curso\curso.api\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
 F:\digitalInnovationOne\workspace\curso\curso.api\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+F:\digitalInnovationOne\workspace\curso\curso.api\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 F:\digitalInnovationOne\workspace\curso\curso.api\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
 F:\digitalInnovationOne\workspace\curso\curso.api\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
 F:\digitalInnovationOne\workspace\curso\curso.api\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
@@ -67,5 +68,3 @@ F:\digitalInnovationOne\workspace\curso\curso.api\obj\Debug\netcoreapp3.1\curso.
 F:\digitalInnovationOne\workspace\curso\curso.api\obj\Debug\netcoreapp3.1\curso.api.dll
 F:\digitalInnovationOne\workspace\curso\curso.api\obj\Debug\netcoreapp3.1\curso.api.pdb
 F:\digitalInnovationOne\workspace\curso\curso.api\obj\Debug\netcoreapp3.1\curso.api.genruntimeconfig.cache
-F:\digitalInnovationOne\workspace\curso\curso.api\bin\Debug\netcoreapp3.1\Humanizer.dll
-F:\digitalInnovationOne\workspace\curso\curso.api\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll

@@ -4,10 +4,117 @@
         <name>curso.api</name>
     </assembly>
     <members>
+        <member name="T:curso.api.Business.Entities.Curso">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Business.Entities.Curso.Codigo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Business.Entities.Curso.Nome">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Business.Entities.Curso.Descricao">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Business.Entities.Curso.CodigoUsuario">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Business.Entities.Curso.Usuario">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:curso.api.Business.Entities.Usuario">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Business.Entities.Usuario.Codigo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Business.Entities.Usuario.Login">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Business.Entities.Usuario.Email">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Business.Entities.Usuario.Senha">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:curso.api.Business.Repositories.ICursoRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Business.Repositories.ICursoRepository.AdicionarCurso(curso.api.Business.Entities.Curso)">
+            <summary>
+            
+            </summary>
+            <param name="curso"></param>
+        </member>
+        <member name="M:curso.api.Business.Repositories.ICursoRepository.Commit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Business.Repositories.ICursoRepository.ObterPorUsuario(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="codigoUsuario"></param>
+            <returns></returns>
+        </member>
+        <member name="T:curso.api.Business.Repositories.IUsuarioRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Business.Repositories.IUsuarioRepository.Adicionar(curso.api.Business.Entities.Usuario)">
+            <summary>
+            
+            </summary>
+            <param name="usuario"></param>
+        </member>
+        <member name="M:curso.api.Business.Repositories.IUsuarioRepository.Commit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Business.Repositories.IUsuarioRepository.ObterUsuario(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="login"></param>
+            <returns></returns>
+        </member>
         <member name="T:curso.api.Configurations.DBFactoryDBContext">
             <summary>
             
             </summary>
+        </member>
+        <member name="M:curso.api.Configurations.DBFactoryDBContext.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
         </member>
         <member name="M:curso.api.Configurations.DBFactoryDBContext.CreateDbContext(System.String[])">
             <summary>
@@ -16,10 +123,46 @@
             <param name="args"></param>
             <returns></returns>
         </member>
+        <member name="T:curso.api.Configurations.IAuthenticationService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Configurations.IAuthenticationService.GerarToken(curso.api.Models.Usuarios.UsuarioViewModelOutput)">
+            <summary>
+            
+            </summary>
+            <param name="usuarioViewModelOutput"></param>
+            <returns></returns>
+        </member>
+        <member name="T:curso.api.Configurations.JwtServices">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Configurations.JwtServices.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:curso.api.Configurations.JwtServices.GerarToken(curso.api.Models.Usuarios.UsuarioViewModelOutput)">
+            <summary>
+            
+            </summary>
+            <param name="usuarioViewModelOutput"></param>
+            <returns></returns>
+        </member>
         <member name="T:curso.api.Controllers.CursoController">
             <summary>
             
             </summary>
+        </member>
+        <member name="M:curso.api.Controllers.CursoController.#ctor(curso.api.Business.Repositories.ICursoRepository)">
+            <summary>
+            
+            </summary>
+            <param name="cursoRepository"></param>
         </member>
         <member name="M:curso.api.Controllers.CursoController.Post(curso.api.Models.Cursos.CursoViewModelInput)">
             <summary>
@@ -38,7 +181,14 @@
             
             </summary>
         </member>
-        <member name="M:curso.api.Controllers.UsuarioController.Logar">
+        <member name="M:curso.api.Controllers.UsuarioController.#ctor(curso.api.Business.Repositories.IUsuarioRepository,curso.api.Configurations.IAuthenticationService)">
+            <summary>
+            
+            </summary>
+            <param name="usuarioRepository"></param>
+            <param name="authenticationService"></param>
+        </member>
+        <member name="M:curso.api.Controllers.UsuarioController.Logar(curso.api.Models.Usuarios.LoginViewModelInput)">
             <summary>
             Serviço de autenticação do usuário
             </summary>
@@ -46,9 +196,9 @@
         </member>
         <member name="M:curso.api.Controllers.UsuarioController.Registrar(curso.api.Models.Usuarios.RegistroViewModelInput)">
             <summary>
-            
+            Este serviço permite cadastrar o Usuário no banco de dados.
             </summary>
-            <param name="registroViewModelInput"></param>
+            <param name="loginViewModelInput"></param>
             <returns></returns>
         </member>
         <member name="T:curso.api.Filters.ValidacaoModelStateCustomizado">
@@ -62,6 +212,33 @@
             </summary>
             <param name="context"></param>
         </member>
+        <member name="T:curso.api.Infraestruture.Data.CursoDbContext">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Infraestruture.Data.CursoDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{curso.api.Infraestruture.Data.CursoDbContext})">
+            <summary>
+            
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="M:curso.api.Infraestruture.Data.CursoDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="P:curso.api.Infraestruture.Data.CursoDbContext.Usuario">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:curso.api.Infraestruture.Data.CursoDbContext.Curso">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:curso.api.Infraestruture.Data.Mappings.CursoMapping">
             <summary>
             
@@ -72,6 +249,98 @@
             
             </summary>
             <param name="builder"></param>
+        </member>
+        <member name="T:curso.api.Infraestruture.Data.Mappings.UsuarioMapping">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Infraestruture.Data.Mappings.UsuarioMapping.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{curso.api.Business.Entities.Usuario})">
+            <summary>
+            
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:curso.api.Infraestruture.Data.Repositories.CursoRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Infraestruture.Data.Repositories.CursoRepository.#ctor(curso.api.Infraestruture.Data.CursoDbContext)">
+            <summary>
+            
+            </summary>
+            <param name="contexto"></param>
+        </member>
+        <member name="M:curso.api.Infraestruture.Data.Repositories.CursoRepository.AdicionarCurso(curso.api.Business.Entities.Curso)">
+            <summary>
+            
+            </summary>
+            <param name="curso"></param>
+        </member>
+        <member name="M:curso.api.Infraestruture.Data.Repositories.CursoRepository.Commit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Infraestruture.Data.Repositories.CursoRepository.ObterPorUsuario(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="codigoUsuario"></param>
+            <returns></returns>
+        </member>
+        <member name="T:curso.api.Infraestruture.Data.Repositories.UsuarioRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Infraestruture.Data.Repositories.UsuarioRepository.#ctor(curso.api.Infraestruture.Data.CursoDbContext)">
+            <summary>
+            
+            </summary>
+            <param name="contexto"></param>
+        </member>
+        <member name="M:curso.api.Infraestruture.Data.Repositories.UsuarioRepository.Adicionar(curso.api.Business.Entities.Usuario)">
+            <summary>
+            
+            </summary>
+            <param name="usuario"></param>
+        </member>
+        <member name="M:curso.api.Infraestruture.Data.Repositories.UsuarioRepository.Commit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Infraestruture.Data.Repositories.UsuarioRepository.ObterUsuario(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="login"></param>
+            <returns></returns>
+        </member>
+        <member name="T:curso.api.Migrations.BaseInicial">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Migrations.BaseInicial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="M:curso.api.Migrations.BaseInicial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="M:curso.api.Migrations.BaseInicial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="modelBuilder"></param>
         </member>
         <member name="T:curso.api.Models.Cursos.CursoViewModelInput">
             <summary>

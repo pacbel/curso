@@ -11,7 +11,10 @@ namespace curso.api.Migrations
     [DbContext(typeof(CursoDbContext))]
     [Migration("20210429194155_Base-Inicial")]
     partial class BaseInicial
-    {
+    {/// <summary>
+    /// 
+    /// </summary>
+    /// <param name="modelBuilder"></param>
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
