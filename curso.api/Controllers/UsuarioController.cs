@@ -1,8 +1,11 @@
-﻿using curso.api.Filters;
+﻿using curso.api.Business.Entities;
+using curso.api.Filters;
+using curso.api.Infraestruture.Data;
 using curso.api.Models;
 using curso.api.Models.Usuarios;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -67,16 +70,34 @@ namespace curso.api.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Este serviço permite cadastrar o Usuário no banco de dados.
         /// </summary>
-        /// <param name="registroViewModelInput"></param>
+        /// <param name="loginViewModelInput"></param>
         /// <returns></returns>
         [HttpPost]
         [Route("registrar")]
         [ValidacaoModelStateCustomizado]
-        public IActionResult Registrar(RegistroViewModelInput registroViewModelInput)
+        public IActionResult Registrar(RegistroViewModelInput loginViewModelInput)
         {
-            return Created("", registroViewModelInput);
+            var optionsBuilder = new DbContextOptionsBuilder<CursoDbContext>();
+            optionsBuilder.UseSqlServer("Server=.;Database=CURSO;user=sa;password=p4ch3c0");
+            CursoDbContext contexto = new CursoDbContext(optionsBuilder.Options);
+
+            var migracoespendentes = contexto.Database.GetPendingMigrations();
+            if (migracoespendentes.Count() > 0)
+            {
+                contexto.Database.Migrate();
+            }
+            var usuario = new Usuario
+            {
+                Login = loginViewModelInput.Login,
+                Senha = loginViewModelInput.Senha,
+                Email = loginViewModelInput.Email
+            };
+            contexto.Usuario.Add(usuario);
+            contexto.SaveChanges();
+
+            return Created("", loginViewModelInput);
         }
     }
 }

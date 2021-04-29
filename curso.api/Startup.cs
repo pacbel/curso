@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -46,7 +47,35 @@ namespace curso.api
                 {
                     options.SuppressModelStateInvalidFilter = true;
                 });
-            
+
+
+            services.AddSwaggerGen(c =>
+           {
+               c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+               {
+                   Description = "JWT Authorization",
+                   Name = "Authorization",
+                   In = ParameterLocation.Header,
+                   Type = SecuritySchemeType.ApiKey,
+                   Scheme = "Bearer"
+               });
+               c.AddSecurityRequirement(new OpenApiSecurityRequirement
+               {
+                   {
+                       new OpenApiSecurityScheme
+                       {
+                           Reference = new OpenApiReference
+                           {
+                               Type = ReferenceType.SecurityScheme,
+                               Id = "Bearer"
+                           }
+                       },
+                       Array.Empty<string>()
+                   }
+               });
+           });
+
+
             services.AddSwaggerGen(c =>
                {
                    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";

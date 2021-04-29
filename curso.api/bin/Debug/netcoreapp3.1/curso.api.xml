@@ -4,6 +4,18 @@
         <name>curso.api</name>
     </assembly>
     <members>
+        <member name="T:curso.api.Configurations.DBFactoryDBContext">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Configurations.DBFactoryDBContext.CreateDbContext(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
         <member name="T:curso.api.Controllers.CursoController">
             <summary>
             
@@ -49,6 +61,17 @@
             
             </summary>
             <param name="context"></param>
+        </member>
+        <member name="T:curso.api.Infraestruture.Data.Mappings.CursoMapping">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:curso.api.Infraestruture.Data.Mappings.CursoMapping.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{curso.api.Business.Entities.Curso})">
+            <summary>
+            
+            </summary>
+            <param name="builder"></param>
         </member>
         <member name="T:curso.api.Models.Cursos.CursoViewModelInput">
             <summary>
